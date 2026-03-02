@@ -1,0 +1,5 @@
+{
+  "name": "Aplikasi Penilaian Ujian",
+  "description": "Aplikasi input nilai ujian siswa dengan fitur AI Chatbot dan Image Generator.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,53 @@
+'use client';
+
+import React, { useState } from 'react';
+import Sidebar from '@/components/Sidebar';
+import StudentTable from '@/components/StudentTable';
+import ImageGenerator from '@/components/ImageGenerator';
+import Chatbot from '@/components/Chatbot';
+import { Student } from '@/types';
+
+const INITIAL_STUDENTS: Student[] = [
+  { id: 1, no: 1, nama: 'Ghoya Rifa Ruh Ramadhan', kelas: '9C', juz: '1', penguji: 'Ust. Oban Robani', nilai: null, keterangan: '' },
+  { id: 2, no: 2, nama: 'M Aryasatyo Harjuna Bachtiar', kelas: '9C', juz: '30', penguji: "Ust. Ja'far Syarif Hidayatullah, S.Pd", nilai: null, keterangan: '' },
+  { id: 3, no: 3, nama: 'Muhammad Asyam Annafi', kelas: '7A', juz: '30', penguji: 'Ust. Opa Mustofa', nilai: null, keterangan: '' },
+  { id: 4, no: 4, nama: 'Nazran Syahid Amanillah', kelas: 'X-2', juz: '30', penguji: 'Ust. Dani Hamdani', nilai: null, keterangan: '' },
+  { id: 5, no: 5, nama: 'Yuswan Ali', kelas: 'X-4', juz: '30', penguji: 'Ust. Muhammad Fauzi Abdillah', nilai: null, keterangan: '' },
+  { id: 6, no: 6, nama: 'Muhammad Fahri Fathurrohman', kelas: 'X-4', juz: '29', penguji: 'Ust. Muhammad Soffan', nilai: null, keterangan: '' },
+  { id: 7, no: 7, nama: 'Muhammad Gufron Nurhadi', kelas: 'X-1', juz: '2', penguji: 'Ust. Muslim Tasdiq', nilai: null, keterangan: '' },
+  { id: 8, no: 8, nama: 'Fawwaz Haikal Rasyidan', kelas: 'X-2', juz: '29', penguji: 'Ust. Luqmanul Hakim, S.T', nilai: null, keterangan: '' },
+  { id: 9, no: 9, nama: 'Khairurrizal Ulil Amri A.B', kelas: '8C', juz: '30', penguji: 'Ust. Opa Mustofa', nilai: null, keterangan: '' },
+  { id: 10, no: 10, nama: 'Arfhan Adhi Irawan', kelas: '8A', juz: '30', penguji: 'Ust. Dani Hamdani', nilai: null, keterangan: '' },
+  { id: 11, no: 11, nama: 'Hizbadien Muhammad', kelas: 'X-4', juz: '3', penguji: 'Ust. Muhammad Fauzi Abdillah', nilai: null, keterangan: '' },
+  { id: 12, no: 12, nama: 'Affan Ghazy Kholilullah', kelas: 'X-1', juz: '28', penguji: 'Ust. Muhammad Soffan', nilai: null, keterangan: '' },
+  { id: 13, no: 13, nama: 'Aldi Fathan Dulfiqor', kelas: 'XI-2', juz: '29', penguji: 'Ust. Muslim Tasdiq', nilai: null, keterangan: '' },
+  { id: 14, no: 14, nama: 'Raditya Nugraha', kelas: 'X-1', juz: '28', penguji: 'Ust. Luqmanul Hakim, S.T', nilai: null, keterangan: '' },
+  { id: 15, no: 15, nama: 'Danish Achmad Hawary', kelas: '9C', juz: '29', penguji: 'Ust. Oban Robani', nilai: null, keterangan: '' },
+];
+
+export default function Home() {
+  const [activeTab, setActiveTab] = useState<'data' | 'image' | 'chat'>('data');
+  const [students, setStudents] = useState<Student[]>(INITIAL_STUDENTS);
+
+  const handleUpdateStudent = (id: number, updates: Partial<Student>) => {
+    setStudents((prev) =>
+      prev.map((student) => (student.id === id ? { ...student, ...updates } : student))
+    );
+  };
+
+  return (
+    <div className="flex h-screen bg-slate-100 font-sans">
+      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+      
+      <main className="flex-1 overflow-hidden p-8">
+        <div className="h-full max-w-7xl mx-auto">
+          {activeTab === 'data' && (
+            <StudentTable students={students} onUpdateStudent={handleUpdateStudent} />
+          )}
+          {activeTab === 'image' && <ImageGenerator />}
+          {activeTab === 'chat' && <Chatbot />}
+        </div>
+      </main>
+    </div>
+  );
+}
