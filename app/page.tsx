@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import StudentTable from '@/components/StudentTable';
+import ImageGenerator from '@/components/ImageGenerator';
 import Chatbot from '@/components/Chatbot';
 import { Student } from '@/types';
 
