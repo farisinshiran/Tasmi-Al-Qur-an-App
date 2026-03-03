@@ -1,3 +1,4 @@
+// app/page.tsx
 'use client';
 
 import React, { useState } from 'react';
@@ -7,7 +8,7 @@ import ImageGenerator from '@/components/ImageGenerator';
 import Chatbot from '@/components/Chatbot';
 
 // ===============================
-// TYPES (lokal, jangan import ganda)
+// TYPES (definisi lokal — jangan import ganda)
 // ===============================
 export type Student = {
   id: number;
@@ -21,7 +22,7 @@ export type Student = {
 };
 
 // ===============================
-// INITIAL DATA
+// INITIAL DATA (semua keterangan kosong jadi 'Belum Tasmi')
 // ===============================
 const INITIAL_STUDENTS: Student[] = [
   { id: 1, no: 1, nama: 'Ghoya Rifa Ruh Ramadhan', kelas: '9C', juz: '1', penguji: 'Ust. Oban Robani', nilai: null, keterangan: 'Belum Tasmi' },
@@ -56,6 +57,7 @@ const INITIAL_STUDENTS: Student[] = [
   { id: 30, no: 30, nama: 'Hafid Fauzi', kelas: '8D', juz: '30', penguji: 'Ust. Muslim Tasdiq', nilai: null, keterangan: 'Belum Tasmi' },
   { id: 31, no: 31, nama: 'Muhammad Djibril Maulana Yusuf', kelas: '8A', juz: '29', penguji: 'Ust. Luqmanul Hakim, S.T', nilai: null, keterangan: 'Belum Tasmi' },
   { id: 32, no: 32, nama: 'Rafa Ahza Zaidan', kelas: '8A', juz: '29', penguji: 'Ust. Muhammad Faris Nuriman', nilai: 92, keterangan: 'Lulus' },
+];
 
 // ===============================
 // HELPERS: validasi & keterangan
@@ -88,12 +90,6 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<'data' | 'image' | 'chat'>('data');
   const [students, setStudents] = useState<Student[]>(INITIAL_STUDENTS);
 
-  /**
-   * handleUpdateStudent
-   * - tujuan: user hanya input nilai
-   * - keterangan dihitung otomatis
-   * - jika updates berisi keterangan, itu diabaikan (tidak di-apply)
-   */
   const handleUpdateStudent = (id: number, updates: Partial<Student>) => {
     setStudents((prev) =>
       prev.map((student) => {
@@ -112,10 +108,9 @@ export default function Home() {
         // Keterangan di-generate otomatis — jangan izinkan override manual
         const keteranganFinal = generateKeterangan(nilaiFinal);
 
-        // Gabungkan semua field selain keterangan (keterangan kita set otomatis)
         return {
           ...student,
-          ...updates, // ini boleh meng-override fields lain (mis. nama) jika memang diperlukan
+          ...updates,
           nilai: nilaiFinal,
           keterangan: keteranganFinal,
         };
