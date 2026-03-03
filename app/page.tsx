@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import StudentTable from '@/components/StudentTable';
-import ImageGenerator from '@/components/ImageGenerator';
 import Chatbot from '@/components/Chatbot';
 import { Student } from '@/types';
 
@@ -23,6 +22,23 @@ const INITIAL_STUDENTS: Student[] = [
   { id: 13, no: 13, nama: 'Aldi Fathan Dulfiqor', kelas: 'XI-2', juz: '29', penguji: 'Ust. Muslim Tasdiq', nilai: null, keterangan: '' },
   { id: 14, no: 14, nama: 'Raditya Nugraha', kelas: 'X-1', juz: '28', penguji: 'Ust. Luqmanul Hakim, S.T', nilai: null, keterangan: '' },
   { id: 15, no: 15, nama: 'Danish Achmad Hawary', kelas: '9C', juz: '29', penguji: 'Ust. Oban Robani', nilai: null, keterangan: '' },
+  { id: 16, no: 16, nama: 'Akmal Syahrizal', kelas: 'XI-4', juz: '29', penguji: 'Ust. Muhammad Soffan', nilai: null, keterangan: '' },
+  { id: 17, no: 17, nama: 'Ramdan MK', kelas: 'XI-4', juz: '30', penguji: 'Ust. Muslim Tasdiq', nilai: null, keterangan: '' },
+  { id: 18, no: 18, nama: 'Affan Ghazy Kholilullah', kelas: 'X-1', juz: '1', penguji: 'Ust. Luqmanul Hakim, S.T', nilai: null, keterangan: ' ' },
+  { id: 19, no: 19, nama: 'Zubair Alfatih', kelas: '7A', juz: '2', penguji: 'Ust. Oban Robani', nilai: 99, keterangan: 'Lulus (Mutqin)' },
+  { id: 20, no: 20, nama: 'M Athalarik Wijaya Saputra', kelas: '7A', juz: '30', penguji: 'Ust. Opa Mustofa', nilai: null, keterangan: ' ' },
+  { id: 21, no: 21, nama: 'Muhammad Azzam Huwaidi', kelas: 'XI-2', juz: '30', penguji: 'Ust. Dani Hamdani', nilai: null, keterangan: ' ' },
+  { id: 22, no: 22, nama: 'Muhammad Irham Pane', kelas: 'XI-2', juz: '29', penguji: 'Ust. Muhammad Fauzi Abdillah', nilai: null, keterangan: ' ' },
+  { id: 23, no: 23, nama: 'Muhammad Irham Pane', kelas: 'XI-2', juz: '30', penguji: 'Ust. Ja\'far Syarif Hidayatullah, S.Pd', nilai: null, keterangan: ' ' },
+  { id: 24, no: 24, nama: 'Imadudin Rijal Al-Faruq', kelas: 'XI-4', juz: '29', penguji: 'Ust. Oban Robani', nilai: 97.5, keterangan: 'Lulus (Mutqin)' },
+  { id: 25, no: 25, nama: 'Ismail Fathanul Islam', kelas: 'XI-4', juz: '5', penguji: 'Ust. Ja\'far Syarif Hidayatullah, S.Pd', nilai: null, keterangan: ' ' },
+  { id: 26, no: 26, nama: 'Yusuf Rizal Abdilllah', kelas: 'XI-4', juz: '30', penguji: 'Ust. Opa Mustofa', nilai: null, keterangan: ' ' },
+  { id: 27, no: 27, nama: 'Muhammad Raihan', kelas: 'XI-4', juz: '1', penguji: 'Ust. Dani Hamdani', nilai: null, keterangan: ' ' },
+  { id: 28, no: 28, nama: 'Zhafran Izharul Haq', kelas: '8D', juz: '29', penguji: 'Ust. Muhammad Fauzi Abdillah', nilai: null, keterangan: ' ' },
+  { id: 29, no: 29, nama: 'Fathir Hafiz Gumilar', kelas: '8C', juz: '30', penguji: 'Ust. Muhammad Soffan', nilai: null, keterangan: ' ' },
+  { id: 30, no: 30, nama: 'Hafid Fauzi', kelas: '8D', juz: '30', penguji: 'Ust. Muslim Tasdiq', nilai: null, keterangan: ' ' },
+  { id: 31, no: 31, nama: 'Muhammad Djibril Maulana Yusuf', kelas: '8A', juz: '29', penguji: 'Ust. Luqmanul Hakim, S.T', nilai: null, keterangan: ' ' },
+  { id: 32, no: 32, nama: 'Rafa Ahza Zaidan', kelas: '8A', juz: '29', penguji: 'Ust. Muhammad Faris Nuriman', nilai: 92, keterangan: 'Lulus' },
 ];
 
 export default function Home() {
